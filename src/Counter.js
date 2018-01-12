@@ -2,27 +2,19 @@ import React from 'react';
 import './Counter.css';
 
 class Counter extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0
-    };
-
-    this.increment = this.increment.bind(this)
-  }
-
-  increment() {
-    this.setState({ count: this.state.count + 1 })
-  }
 
   render() {
     return (
-      <div className="counter">
-        <button onClick={this.increment}>+</button>
-        <div className="count">{this.state.count}</div>
+      <div>
+        <div className="counter">
+          <button onClick={ () => {this.props.increment(this.props.countBy, this.props.index)} }>+{this.props.countBy}</button>
+          <div className="count"> {this.props.count}</div>
+          <button onClick={ () => {this.props.decrement(this.props.countBy, this.props.index)} }>-{this.props.countBy}</button>
+          <button onClick={ () => {this.props.deleteCounter(this.props.index)} } >Delete</button>
+        </div>
       </div>
-    );
+      )
   }
 }
 
-export default Counter
+export default Counter;
